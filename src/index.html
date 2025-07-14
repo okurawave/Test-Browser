@@ -85,5 +85,45 @@
     <input type="text" value="https://github.com/" placeholder="URLを入力" />
   </div>
   <webview id="webview" src="https://github.com/" allowpopups></webview>
+  <script>
+    const webview = document.getElementById('webview');
+    const addressbar = document.querySelector('#nav input');
+    const titlebar = document.getElementById('titlebar');
+    const backButton = document.getElementById('backButton');
+    const forwardButton = document.getElementById('forwardButton');
+    const reloadButton = document.getElementById('reloadButton');
+
+    addressbar.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        let url = addressbar.value;
+        const validUrlPattern = /^(https?:\/\/)/;
+        if (!validUrlPattern.test(url)) {
+          alert('Invalid URL. Please enter a URL starting with http:// or https://');
+          return;
+        }
+        webview.src = url;
+      }
+    });
+
+    webview.addEventListener('loadcommit', () => {
+      addressbar.value = webview.getURL();
+    });
+
+    webview.addEventListener('page-title-updated', (e) => {
+      titlebar.innerText = `Test-Browser - ${e.title}`;
+    });
+
+    backButton.addEventListener('click', () => {
+      webview.goBack();
+    });
+
+    forwardButton.addEventListener('click', () => {
+      webview.goForward();
+    });
+
+    reloadButton.addEventListener('click', () => {
+      webview.reload();
+    });
+  </script>
 </body>
 </html>
