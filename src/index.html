@@ -93,7 +93,7 @@
     const forwardButton = document.getElementById('forwardButton');
     const reloadButton = document.getElementById('reloadButton');
 
-    addressbar.addEventListener('keypress', (e) => {
+    addressbar.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         let url = addressbar.value;
         const validUrlPattern = /^(https?:\/\/)/;
