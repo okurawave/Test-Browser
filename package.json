@@ -12,7 +12,8 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
     "@electron-forge/plugin-fuses": "^7.8.1",
     "@electron/fuses": "^1.8.0",
-    "electron": "^37.2.1"
+    "electron": "^37.2.1",
+    "jest": "^30.0.0"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1"
@@ -21,6 +22,6 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "test": "echo \"No tests yet\""
+    "test": "jest"
   }
 }
