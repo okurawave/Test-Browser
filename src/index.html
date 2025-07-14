@@ -89,9 +89,9 @@
     const webview = document.getElementById('webview');
     const addressbar = document.querySelector('#nav input');
     const titlebar = document.getElementById('titlebar');
-    const backButton = document.querySelector('#nav button:nth-child(1)');
-    const forwardButton = document.querySelector('#nav button:nth-child(2)');
-    const reloadButton = document.querySelector('#nav button:nth-child(3)');
+    const backButton = document.getElementById('backButton');
+    const forwardButton = document.getElementById('forwardButton');
+    const reloadButton = document.getElementById('reloadButton');
 
     addressbar.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
