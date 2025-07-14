@@ -114,7 +114,7 @@
       // Handle address bar navigation
       urlInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-          let url = urlInput.value.trim();
+          let url = urlInput.value.trim().toLowerCase();
           if (url) {
             // Add protocol if missing
             if (!url.startsWith('http://') && !url.startsWith('https://')) {
