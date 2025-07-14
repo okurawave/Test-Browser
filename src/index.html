@@ -112,7 +112,7 @@
       }
 
       // Handle address bar navigation
-      urlInput.addEventListener('keydown', function(e) {
+      urlInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
           let url = urlInput.value.trim().toLowerCase();
           if (url) {
