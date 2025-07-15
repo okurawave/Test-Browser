@@ -115,6 +115,37 @@
         urlInput.value = event.url;
       });
 
+      // Handle failed navigation to ensure URL synchronization
+      webview.addEventListener('did-fail-load', function(event) {
+        console.log('Navigation failed for:', event.validatedURL);
+        // Revert URL input to the actual current URL if navigation fails
+        if (event.isMainFrame) {
+          urlInput.value = webview.src;
+        }
+        updateNavigationButtons();
+      });
+
+      // Handle loading states for better URL synchronization
+      webview.addEventListener('did-start-loading', function() {
+        updateNavigationButtons();
+      });
+
+      webview.addEventListener('did-stop-loading', function() {
+        // Ensure URL is synchronized after loading completes
+        urlInput.value = webview.src;
+        updateNavigationButtons();
+      });
+
+      // Handle load commit to ensure URL is synchronized when navigation commits
+      webview.addEventListener('load-commit', function(event) {
+        console.log('Load commit:', event.url);
+        // Update URL when navigation commits (handles redirects properly)
+        if (event.isMainFrame) {
+          urlInput.value = event.url;
+        }
+        updateNavigationButtons();
+      });
+
       // Initial state
       updateNavigationButtons();
 
