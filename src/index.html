@@ -95,6 +95,9 @@
 
       // Handle new window events for link navigation
       webview.addEventListener('new-window', function(event) {
+        // Suppress the default new-window behavior
+        event.preventDefault();
+        
         // Navigate to the new URL in the same WebView instead of opening new window
         const url = event.url;
         console.log('New window request for:', url);
